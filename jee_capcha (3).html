@@ -1,0 +1,192 @@
+<html lang="en-gb"><head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View QrCode</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1; /* This makes the content take up all available space, pushing the footer to the bottom */
+        }
+
+        .headingmain h1 {
+            font-size: 1.1em;
+            margin: 0px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .headingmain h4 {
+            font-size: 1em;
+            margin: 0px;
+            font-weight: 500;
+            padding: 3px 3px;
+            text-align: center;
+        }
+
+        .header {
+            border-bottom: 2em solid #002041;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            background: #002041;
+            margin-top: auto; /* Pushes the footer to the bottom */
+            /*  position: absolute;   // bottom: 0; padding: 10px;
+          text-align: center;*/
+        }
+
+            footer p {
+                color: #fff;
+            }
+
+        .themecolor {
+            background: #002041;
+            color: #fff;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var currentCaptcha = '';
+
+        function generateCaptchaText() {
+            // excludes visually ambiguous characters (0/O, 1/I/l)
+            var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+            var result = '';
+            for (var i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function drawCaptcha(text) {
+            var canvas = document.getElementById('capimage');
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#000080';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = 'bold 22px Arial, sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+        }
+
+        function refreshCaptcha() {
+            currentCaptcha = generateCaptchaText();
+            drawCaptcha(currentCaptcha);
+            document.getElementById('Captcha1').value = '';
+            document.querySelector('[data-valmsg-for="Captcha1"]').textContent = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            refreshCaptcha();
+
+            document.getElementById('captcha-refresh-btn').addEventListener('click', refreshCaptcha);
+
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var entered = document.getElementById('Captcha1').value;
+                var errorSpan = document.querySelector('[data-valmsg-for="Captcha1"]');
+
+                if (entered === currentCaptcha) {
+                    window.location.href = 'JEEMAINM.html';
+                } else {
+                    errorSpan.textContent = 'Incorrect CAPTCHA, please try again.';
+                    refreshCaptcha();
+                }
+            });
+        });
+    </script>
+    <style>
+        /* Sticky footer only for desktop screens */
+        @media (min-width: 792px) {
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="/ResultoService26/P1S2JM26/ViewQrCode" method="post">        <div class="container-fluid">
+            
+            <div class="row header mt-2">
+                <div class="col-md-3 col-sm-3">
+                    <img src="mhrdnew.png" alt="mhrdnew" class="img-fluid" height="60" style="text-align:left">
+                </div>
+                <div class="col-md-6 col-sm-6 headingmain text-center">
+                    JOINT ENTRANCE EXAMINATION (Main) – 2026 SESSION 2  <br>
+                    NTA SCORE: Paper 1 (B.E./B Tech.)
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <img src="jee_nta.png" alt="NTA" class="img-fluid" height="60" style="text-align:right">
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="row mt-5">
+                    <fieldset class="border p-0 w-50 m-0 m-auto">
+                        <legend class="w-100 themecolor p-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="white" style="vertical-align:-1px;margin-right:2px;">
+                                <path d="M6 10V8a6 6 0 1 1 12 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1zm2 0h8V8a4 4 0 1 0-8 0v2z"/>
+                            </svg>
+                            View Result
+                        </legend>
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-4 col-sm-4  text-end">
+                                <label class="control-label" for="Captcha1">Enter CAPTCHA </label><span class="text-success fw-bold">(case sensitive) </span> :
+                            </div>
+                            <div class="col-lg-8 col-sm-8">
+                                <input autocomplete="off" class="form-control text-box single-line" data-val="true" data-val-required="*Required" id="Captcha1" maxlength="6" minlength="6" name="Captcha1" style="" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Captcha1" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-4 col-sm-4  text-end">
+                                <label class="control-label" for="Secpin">CAPTCHA :</label>
+                            </div>
+                            <div class="col-lg-8 col-sm-8">
+                                <canvas id="capimage" width="150" height="42" style="border-radius:4px;vertical-align:middle;"></canvas>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#28a745" id="captcha-refresh-btn" style="cursor:pointer;vertical-align:middle;margin-left:4px;">
+                                    <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.74 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3">
+                            <div class="col-lg-4 col-sm-4"></div>
+                            <div class="col-lg-8 col-sm-8">
+                                <input type="submit" id="Submit" text="" class="btn btn-success" value="SUBMIT">
+                                <span style="color:red;"> </span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid themecolor mt-3 footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center mt-2">
+                        This site is designed and hosted by NIC PEP Division. The contents are provided by NTA. For any further information, please contact NTA.
+                    </p>
+                </div>
+            </div>
+        </div>
+</form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+</body></html>
